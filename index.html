@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last Person Standing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Last Person Standing</h1>
+    <form id="prediction-form">
+        <label for="player-name">Player Name:</label>
+        <input type="text" id="player-name" required>
+        <label for="team">Select Team:</label>
+        <select id="team" required>
+            <option value="">Choose a team</option>
+            <option value="Arsenal">Arsenal</option>
+            <option value="Chelsea">Chelsea</option>
+            <!-- Add all 20 Premier League teams here -->
+        </select>
+        <button type="submit">Submit Prediction</button>
+    </form>
+    <div id="results"></div>
+    <script src="script.js" defer></script>
+</body>
+</html>
