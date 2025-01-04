@@ -23,8 +23,6 @@
             <option value="Crystal Palace">Crystal Palace</option>
             <option value="Everton">Everton</option>
             <option value="Fulham">Fulham</option>
-            <option value="Ipswich Town">Ipswich Town</option>
-            <option value="Leicester City">Leicester City</option>
             <option value="Liverpool">Liverpool</option>
             <option value="Manchester City">Manchester City</option>
             <option value="Manchester United">Manchester United</option>
@@ -48,6 +46,32 @@
         </thead>
         <tbody></tbody>
     </table>
+
+    <!-- Firebase Initialization -->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+      import { getDatabase } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyD4yDVi_nWMIqAz8d66ak37NlTj9izpkKY",
+        authDomain: "last-man-standing-1f98e.firebaseapp.com",
+        databaseURL: "https://last-man-standing-1f98e-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "last-man-standing-1f98e",
+        storageBucket: "last-man-standing-1f98e.firebasestorage.app",
+        messagingSenderId: "727839831660",
+        appId: "1:727839831660:web:1891f8cdf2f3e1a3564a49",
+        measurementId: "G-G0PT8TT6XE"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app); // Initialize Firebase Realtime Database
+
+      console.log("Firebase Initialized");
+    </script>
+
     <script src="script.js" defer></script>
 </body>
 </html>
