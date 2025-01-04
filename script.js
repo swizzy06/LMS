@@ -1,13 +1,15 @@
-// Object to store predictions
+// Object to store player predictions
 const predictions = {};
 
 // Handle form submission
 document.getElementById('prediction-form').addEventListener('submit', function (event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent page reload on form submission
 
+    // Get player name and selected team
     const playerName = document.getElementById('player-name').value.trim();
     const team = document.getElementById('team').value;
 
+    // Validate inputs
     if (!playerName || !team) {
         alert('Please fill out all fields!');
         return;
@@ -16,39 +18,52 @@ document.getElementById('prediction-form').addEventListener('submit', function (
     // Add or update the player's prediction
     predictions[playerName] = { team, editable: true };
 
-    // Update the table with the live predictions
+    // Update the predictions table
     updateTable();
 
-    // Reset the form
+    // Clear the form fields for the next submission
     document.getElementById('prediction-form').reset();
 });
 
-// Function to update the table
+// Function to update the predictions table
 function updateTable() {
     const tbody = document.querySelector('#predictions-table tbody');
-    tbody.innerHTML = '';
+    tbody.innerHTML = ''; // Clear the table before re-populating
 
+    // Loop through the predictions object and add rows
     for (const [player, data] of Object.entries(predictions)) {
         const row = document.createElement('tr');
-
         row.innerHTML = `
             <td>${player}</td>
             <td>${data.team}</td>
             <td>
-                ${data.editable ? `<button onclick="editPrediction('${player}')">Edit</button>` : 'Locked'}
+                ${
+                    data.editable
+                        ? `<button onclick="editPrediction('${player}')">Edit</button>`
+                        : 'Locked'
+                }
             </td>
         `;
         tbody.appendChild(row);
     }
 }
 
-// Function to edit a prediction
+// Function to edit a player's prediction
 function editPrediction(player) {
-    if (!predictions[player].editable) return;
+    if (!predictions[player].editable) {
+        alert("You can't edit this prediction anymore!");
+        return;
+    }
 
-    const team = prompt(`Update the team for ${player}:`, predictions[player].team);
-    if (team) {
-        predictions[player].team = team;
+    // Prompt the user for a new team
+    const newTeam = prompt(
+        `Update the team for ${player}:`,
+        predictions[player].team
+    );
+
+    // Validate the input and update the prediction
+    if (newTeam) {
+        predictions[player].team = newTeam;
         updateTable();
     }
 }
